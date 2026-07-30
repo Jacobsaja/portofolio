@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-base: 20 20 20;
+  --color-surface: 28 28 28;
+  --color-surface-hover: 35 35 35;
+  --color-edge: 44 44 44;
+  --color-edge-hover: 58 58 58;
+  --color-accent: 222 115 86;
+  --color-accent-light: 234 139 112;
+  --color-ink: 242 241 236;
+  --color-muted: 163 161 154;
+  --color-faint: 120 118 111;
+}
+
+/* Light mode: not a flat invert - warm paper tone (not pure white), and the
+   accent is deepened slightly so it still holds contrast on a light base. */
+[data-theme='light'] {
+  --color-base: 250 248 244;
+  --color-surface: 255 255 255;
+  --color-surface-hover: 243 240 234;
+  --color-edge: 224 218 208;
+  --color-edge-hover: 206 198 186;
+  --color-accent: 196 92 64;
+  --color-accent-light: 214 112 84;
+  --color-ink: 32 29 26;
+  --color-muted: 92 88 82;
+  --color-faint: 140 134 124;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(var(--color-base));
+  color: rgb(var(--color-ink));
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+::selection {
+  background-color: rgb(var(--color-accent));
+  color: rgb(var(--color-base));
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--color-base));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-edge));
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-accent));
+}
+
+:focus-visible {
+  outline: 2px solid rgb(var(--color-accent));
+  outline-offset: 2px;
+}
+
+/* Custom cursor - only hides the native cursor once CustomCursor.jsx
+   confirms the device actually has a mouse (see body.custom-cursor-active) */
+body.custom-cursor-active,
+body.custom-cursor-active a,
+body.custom-cursor-active button {
+  cursor: none;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgb(var(--color-accent));
+  pointer-events: none;
+  z-index: 100;
+  transform: translate(-100px, -100px);
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid rgb(var(--color-accent) / 0.55);
+  pointer-events: none;
+  z-index: 100;
+  transform: translate(-100px, -100px);
+  transition: width 200ms ease, height 200ms ease, border-color 200ms ease, background-color 200ms ease;
+}
+
+.cursor-ring--hover {
+  width: 56px;
+  height: 56px;
+  background: rgb(var(--color-accent) / 0.12);
+  border-color: rgb(var(--color-accent));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
