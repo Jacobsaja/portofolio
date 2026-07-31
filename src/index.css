@@ -47,6 +47,30 @@ body {
   transition: background-color 250ms ease, color 250ms ease;
 }
 
+/* ===================================
+   CRT SCANLINES — dark mode only, very subtle
+   =================================== */
+[data-theme='dark'] body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.025) 3px,
+    rgba(0, 0, 0, 0.025) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  animation: scanline-drift 10s linear infinite;
+}
+
+@keyframes scanline-drift {
+  from { background-position: 0 0; }
+  to   { background-position: 0 40px; }
+}
+
 ::selection {
   background-color: rgb(var(--color-accent));
   color: rgb(var(--color-base));
@@ -123,4 +147,219 @@ body.custom-cursor-active button {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+.cursor-dot--dim {
+  opacity: 0.4;
+  animation: cursor-pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes cursor-pulse-slow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.15; }
+}
+
+/* ===================================
+   TERMINAL CURSOR BLINK
+   =================================== */
+
+@keyframes terminal-cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 0.5ch;
+  height: 0.9em;
+  background: currentColor;
+  vertical-align: text-bottom;
+  margin-left: 1px;
+  animation: terminal-cursor-blink 1s step-end infinite;
+}
+
+/* ===================================
+   GLITCH TEXT EFFECT
+   =================================== */
+
+@keyframes glitch-color {
+  0%, 85%, 100% {
+    color: rgb(var(--color-accent));
+    text-shadow: none;
+    clip-path: none;
+  }
+  86% {
+    color: #ff5c5c;
+    text-shadow: -3px 0 #00d4ff;
+    clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+  }
+  87% {
+    color: #00d4ff;
+    text-shadow: 3px 0 #ff5c5c;
+    clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+  }
+  88% {
+    color: rgb(var(--color-accent));
+    text-shadow: none;
+    clip-path: none;
+  }
+  94% {
+    color: rgb(var(--color-accent));
+    text-shadow: none;
+  }
+  95% {
+    color: #ff5c5c;
+    text-shadow: 2px 0 #00d4ff;
+  }
+  96% {
+    color: rgb(var(--color-accent));
+    text-shadow: none;
+  }
+}
+
+@keyframes glitch-shake {
+  0%, 85%, 100% { transform: translateX(0) skewX(0deg); }
+  86% { transform: translateX(-3px) skewX(-1deg); }
+  87% { transform: translateX(3px) skewX(1deg); }
+  88% { transform: translateX(0) skewX(0deg); }
+  95% { transform: translateX(-2px); }
+  96% { transform: translateX(0); }
+}
+
+.glitch-text {
+  display: inline-block;
+  position: relative;
+  animation: glitch-color 8s infinite, glitch-shake 8s infinite;
+}
+
+/* ===================================
+   REDACTED TEXT EFFECT
+   Reveals when eye beam is active (via .revealed class)
+   =================================== */
+
+.redacted {
+  background-color: rgb(var(--color-ink));
+  color: transparent;
+  border-radius: 2px;
+  padding: 0 1px;
+  transition: background-color 600ms ease, color 600ms ease;
+  cursor: default;
+  user-select: none;
+}
+
+.redacted.revealed {
+  background-color: transparent;
+  color: inherit;
+}
+
+/* ===================================
+   PROJECT CARD SCAN EFFECT
+   =================================== */
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(var(--color-accent) / 0.05),
+    transparent
+  );
+  transition: top 0.7s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.project-card:hover::before {
+  top: 150%;
+}
+
+/* ===================================
+   HUD PULSE INDICATOR
+   =================================== */
+
+@keyframes hud-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+.hud-dot {
+  display: inline-block;
+  animation: hud-pulse 1.8s ease-in-out infinite;
+}
+
+/* ===================================
+   HUD FADE IN
+   =================================== */
+
+@keyframes hud-reveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hud-animate {
+  animation: hud-reveal 0.6s ease forwards;
+}
+
+/* ===================================
+   FILM GRAIN OVERLAY
+   =================================== */
+.film-grain {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200vw;
+  height: 200vh;
+  pointer-events: none;
+  z-index: 9998; /* Below CRT scanlines and Custom Cursor */
+  opacity: 0.04; /* Very subtle */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  animation: grain-animation 1s steps(4) infinite;
+}
+
+[data-theme='dark'] .film-grain {
+  opacity: 0.07;
+}
+
+@keyframes grain-animation {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+/* ===================================
+   3D TILT CARDS
+   =================================== */
+.tilt-card-container {
+  perspective: 1000px;
+}
+
+.tilt-card {
+  transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* ===================================
+   COMMAND PALETTE
+   =================================== */
+.command-palette-overlay {
+  background-color: rgba(var(--color-base), 0.4);
+  backdrop-filter: blur(4px);
 }

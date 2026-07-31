@@ -1,11 +1,14 @@
 export default function Hero() {
   return (
     <section id="hero" className="mx-auto max-w-3xl px-6 py-28">
-      <p className="mb-4 animate-fadeUp text-sm text-accent opacity-0">Full stack developer</p>
+      <p className="mb-4 animate-fadeUp font-mono text-xs text-accent opacity-0">
+        <span className="text-faint/50">// </span>Full stack developer
+      </p>
 
       <h2 className="mb-6 animate-fadeUp text-3xl font-medium leading-snug text-ink opacity-0 sm:text-4xl [animation-delay:0.12s]">
-        Bangun produk yang <span className="text-accent">terasa hidup</span>, bukan cuma
-        berfungsi.
+        Bangun produk yang{' '}
+        <span className="glitch-text">terasa hidup</span>
+        , bukan cuma berfungsi.
       </h2>
 
       <p className="mb-8 max-w-xl animate-fadeUp text-base leading-relaxed text-muted opacity-0 [animation-delay:0.24s]">

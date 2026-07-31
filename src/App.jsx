@@ -9,6 +9,9 @@ import Projects from './components/Projects.jsx'
 import About from './components/About.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import HUD from './components/HUD.jsx'
+import FilmGrain from './components/FilmGrain.jsx'
+import CommandPalette from './components/CommandPalette.jsx'
 
 export default function App() {
   const [navReady, setNavReady] = useState(false)
@@ -18,6 +21,28 @@ export default function App() {
   const [wipe, setWipe] = useState(null)
   const heroDockRef = useRef(null)
   const navDockRef = useRef(null)
+
+  // Console Easter Egg
+  useEffect(() => {
+    console.log(
+      '%c╔═══════════════════════════════╗\n║  hey, you found the terminal  ║\n║  jacob@dev is hiring.         ║\n║  simorangkirjacob@gmail.com   ║\n╚═══════════════════════════════╝',
+      'font-family: monospace; color: #DE7356; font-size: 14px; font-weight: bold;'
+    )
+  }, [])
+
+  // Page Visibility API - Signal Lost tab title
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.title = '[SIGNAL LOST] Jacob.dev'
+        // Opsional: force mata tertidur, tapi karena blur tab kadang OS handle JS freeze
+      } else {
+        document.title = 'Jacob — Full Stack Developer'
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
+  }, [])
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
@@ -39,8 +64,10 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-base">
+    <div className="min-h-screen bg-base relative">
+      <FilmGrain />
       <CustomCursor />
+      <CommandPalette theme={theme} onToggleTheme={handleToggleTheme} />
       <Navbar
         visible={navReady}
         dockRef={navDockRef}
@@ -53,6 +80,8 @@ export default function App() {
         navDockRef={navDockRef}
         theme={theme}
       />
+      {/* HUD system status overlay — appears after eye activates */}
+      <HUD theme={theme} navReady={navReady} />
       <main>
         <Intro onAwake={() => setNavReady(true)} heroDockRef={heroDockRef} />
         <Hero />

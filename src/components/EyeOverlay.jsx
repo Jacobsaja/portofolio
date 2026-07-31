@@ -92,7 +92,7 @@ export default function EyeOverlay({ awake, heroDockRef, navDockRef, theme }) {
           pointerEvents: 'none',
         }}
       >
-        <Eye ref={eyeRef} pupil={pupil} eyeOpen={displayEyeOpen} asleep={displayAsleep} />
+        <Eye ref={eyeRef} pupil={pupil} eyeOpen={displayEyeOpen} asleep={displayAsleep} theme={theme} />
       </div>
       <LightBeam eyeRef={eyeRef} pupil={pupil} mouse={mouse} visible={displayEyeOpen} scale={scale} />
     </>
