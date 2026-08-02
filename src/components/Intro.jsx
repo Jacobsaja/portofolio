@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from 'react'
+import { playTypingSound } from '../utils/audio.js'
 
 const BOOT_LINES = [
   { text: '> initializing jacob.dev...', color: 'text-muted', ms: 0 },
@@ -6,8 +7,10 @@ const BOOT_LINES = [
   { text: '> loading light_beam.js         [OK]', color: 'text-green-400/70', ms: 1100 },
   { text: '> loading theme_engine.js       [OK]', color: 'text-green-400/70', ms: 1550 },
   { text: '> loading cursor_system.js      [OK]', color: 'text-green-400/70', ms: 1980 },
-  { text: '> anomaly detected — observer present', color: 'text-accent', ms: 2600 },
-  { text: '> awaiting identity confirmation...', color: 'text-ink', ms: 3200 },
+  { text: '> HINT: sys.cmd_palette_binding = "CMD/CTRL + K"', color: 'text-faint/60', ms: 2400 },
+  { text: '> HINT: sys.matrix_override = "konami_code"', color: 'text-faint/60', ms: 2800 },
+  { text: '> anomaly detected — observer present', color: 'text-accent', ms: 3400 },
+  { text: '> awaiting identity confirmation...', color: 'text-ink', ms: 4000 },
 ]
 
 // The eye itself no longer lives here - it's rendered by the global
@@ -34,6 +37,7 @@ export default function Intro({ onAwake, heroDockRef }) {
     const timers = BOOT_LINES.map((line, i) =>
       setTimeout(() => {
         setVisibleCount(i + 1)
+        playTypingSound()
         if (i === BOOT_LINES.length - 1) {
           setTimeout(() => setStage('button'), 700)
         }

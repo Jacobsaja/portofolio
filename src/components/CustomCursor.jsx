@@ -112,7 +112,7 @@ export default function CustomCursor() {
         <div
           key={i}
           ref={(el) => (trailsRef.current[i] = el)}
-          className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-accent pointer-events-none z-[99]"
+          className="fixed top-0 left-0 w-1.5 h-1.5 rounded-full bg-accent pointer-events-none z-[10000]"
           style={{ opacity: 0.3 * (1 - i / TRAIL_LENGTH) }}
           aria-hidden="true"
         />
@@ -120,9 +120,10 @@ export default function CustomCursor() {
       <div
         ref={dotRef}
         className={`cursor-dot ${isLight ? 'cursor-dot--dim' : ''}`}
+        style={{ zIndex: 10001 }}
         aria-hidden="true"
       />
-      <div ref={ringRef} className="cursor-ring" aria-hidden="true" />
+      <div ref={ringRef} className="cursor-ring" style={{ zIndex: 10001 }} aria-hidden="true" />
     </>
   )
 }

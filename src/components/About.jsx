@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import PhotoReveal from './PhotoReveal.jsx'
-
-const skills = ['React', 'JavaScript', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Figma']
+import DownloadCV from './DownloadCV.jsx'
 
 export default function About() {
   const [eyeOpen, setEyeOpen] = useState(false)
@@ -51,17 +50,8 @@ export default function About() {
         <R>detail kecil itu</R> yang membedakan produk yang &ldquo;berfungsi&rdquo; dengan
         produk yang <R>&ldquo;diingat&rdquo;</R>.
       </p>
-
-      <div className="flex flex-wrap gap-2">
-        {skills.map((skill) => (
-          <span
-            key={skill}
-            className="rounded-lg border border-edge px-3 py-1.5 text-sm text-ink"
-          >
-            {skill}
-          </span>
-        ))}
-      </div>
+      
+      <DownloadCV />
     </section>
   )
 }

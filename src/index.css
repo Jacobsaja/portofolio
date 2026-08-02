@@ -30,6 +30,20 @@
   --color-faint: 140 134 124;
 }
 
+/* Matrix mode (Developer Easter Egg) */
+[data-theme='matrix'] {
+  --color-base: 5 15 5;
+  --color-surface: 10 25 10;
+  --color-surface-hover: 15 35 15;
+  --color-edge: 30 70 30;
+  --color-edge-hover: 45 100 45;
+  --color-accent: 0 255 0;
+  --color-accent-light: 50 255 50;
+  --color-ink: 200 255 200;
+  --color-muted: 100 200 100;
+  --color-faint: 50 150 50;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -104,6 +118,11 @@ body.custom-cursor-active,
 body.custom-cursor-active a,
 body.custom-cursor-active button {
   cursor: none;
+}
+
+body.custom-cursor-active input,
+body.custom-cursor-active textarea {
+  cursor: text;
 }
 
 .cursor-dot {

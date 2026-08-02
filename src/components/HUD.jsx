@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react'
+import { setMute, getMute } from '../utils/audio.js'
 
 // HUD overlay: shows real-time system status in a corner panel.
 // Appears only after navReady (eye has been activated) so it doesn't
 // clutter the terminal boot phase.
-export default function HUD({ theme, navReady }) {
+export default function HUD({ theme, navReady, hardwareConnected }) {
   const [cursor, setCursor] = useState({ x: 0, y: 0 })
   const [eyeOpen, setEyeOpen] = useState(false)
   const [time, setTime] = useState('')
   const [show, setShow] = useState(false)
+  const [isMuted, setIsMuted] = useState(true)
 
   // Delay reveal until after eye activates
   useEffect(() => {
@@ -43,6 +45,17 @@ export default function HUD({ theme, navReady }) {
     const id = setInterval(tick, 1000)
     return () => clearInterval(id)
   }, [])
+  
+  // Sync mute state on mount
+  useEffect(() => {
+    setIsMuted(getMute())
+  }, [])
+  
+  const toggleMute = () => {
+    const next = !isMuted
+    setIsMuted(next)
+    setMute(next)
+  }
 
   if (!show) return null
 
@@ -70,12 +83,29 @@ export default function HUD({ theme, navReady }) {
           </span>
 
           <span className="text-faint/50">MODE</span>
-          <span className="text-ink/50">{theme === 'dark' ? 'DARK' : 'LIGHT'}</span>
+          <span className="text-ink/50">{theme === 'dark' ? 'DARK' : theme === 'light' ? 'LIGHT' : 'MATRIX'}</span>
+
+          <span className="text-faint/50">HW</span>
+          <span className={hardwareConnected ? 'text-green-400/70' : 'text-faint/40'}>
+            {hardwareConnected ? (
+              <><span className="hud-dot">●</span> CONNECTED</>
+            ) : (
+              'OFFLINE'
+            )}
+          </span>
 
           <span className="text-faint/50">POS</span>
           <span className="tabular-nums text-faint/40">
             {String(cursor.x).padStart(4, '0')},{String(cursor.y).padStart(4, '0')}
           </span>
+          
+          <span className="text-faint/50">AUDIO</span>
+          <button 
+            className="text-left font-mono pointer-events-auto hover:text-accent transition-colors"
+            onClick={toggleMute}
+          >
+            {isMuted ? <span className="text-red-400/70">MUTED</span> : <span className="text-green-400/70">ON</span>}
+          </button>
         </div>
 
         {/* Clock */}

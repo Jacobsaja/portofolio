@@ -1,17 +1,30 @@
 import { useEffect, useState, useRef } from 'react'
+import { playTerminalOpen, playTerminalClose } from '../utils/audio.js'
 
-const ACTIONS = [
-  { id: 'go-hero', label: 'Go to Home', action: () => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' }) },
-  { id: 'go-projects', label: 'Go to Projects', action: () => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) },
-  { id: 'go-about', label: 'Go to About', action: () => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }) },
-  { id: 'go-contact', label: 'Go to Contact', action: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) },
-  { id: 'toggle-theme', label: 'Toggle Theme', action: (onToggleTheme) => {
-    // Memanggil toggle theme dummy di tengah layar karena dipanggil via keyboard
-    onToggleTheme(window.innerWidth / 2, window.innerHeight / 2)
-  }},
-]
+export default function CommandPalette({ theme, devMode, setDevMode, onToggleTheme, onClear, onRestore, hardwareSupported, hardwareConnected, onHardwareConnect, onHardwareDisconnect, onToggleSimulator }) {
+  const ACTIONS = [
+    { id: 'go-hero', label: 'Go to Home', action: () => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' }) },
+    { id: 'go-projects', label: 'Go to Projects', action: () => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) },
+    { id: 'go-about', label: 'Go to About', action: () => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }) },
+    { id: 'go-contact', label: 'Go to Contact', action: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) },
+    { id: 'toggle-theme', label: 'Toggle Theme', action: () => {
+      onToggleTheme(window.innerWidth / 2, window.innerHeight / 2)
+    }},
+    { id: 'clear', label: 'Clear Terminal (Hide Content)', action: () => onClear?.() },
+    { id: 'restore', label: 'Restore Content', action: () => onRestore?.() },
+    { id: 'help', label: 'Help / Show Commands', action: () => { console.log('Available Commands: go-hero, go-projects, go-about, go-contact, toggle-theme, clear, restore, matrix-toggle, simulator') } },
+    { id: 'matrix-toggle', label: devMode ? 'Exit Matrix Mode' : 'Enter Matrix Mode', action: () => setDevMode(!devMode) },
+    { id: 'simulator', label: 'Open Arduino Simulator', action: () => onToggleSimulator?.() },
+  ]
 
-export default function CommandPalette({ theme, onToggleTheme }) {
+  // Add hardware connection actions if supported
+  if (hardwareSupported) {
+    if (hardwareConnected) {
+      ACTIONS.push({ id: 'hardware-disconnect', label: 'Disconnect Hardware', action: () => onHardwareDisconnect?.() })
+    } else {
+      ACTIONS.push({ id: 'hardware-connect', label: 'Connect Hardware (Arduino)', action: () => onHardwareConnect?.() })
+    }
+  }
   const [isOpen, setIsOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -22,10 +35,16 @@ export default function CommandPalette({ theme, onToggleTheme }) {
     const handleKeyDown = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault()
-        setIsOpen((prev) => !prev)
+        setIsOpen((prev) => {
+          const next = !prev
+          if (next) playTerminalOpen()
+          else playTerminalClose()
+          return next
+        })
         setQuery('')
       }
       if (e.key === 'Escape') {
+        if (isOpen) playTerminalClose()
         setIsOpen(false)
       }
     }
@@ -66,11 +85,7 @@ export default function CommandPalette({ theme, onToggleTheme }) {
       e.preventDefault()
       const action = filteredActions[selectedIndex]
       if (action) {
-        if (action.id === 'toggle-theme') {
-          action.action(onToggleTheme)
-        } else {
-          action.action()
-        }
+        action.action()
         setIsOpen(false)
       }
     }
@@ -79,7 +94,7 @@ export default function CommandPalette({ theme, onToggleTheme }) {
   if (!isOpen) return null
 
   return (
-    <div className="command-palette-overlay fixed inset-0 z-[9999] flex items-start justify-center pt-32" onClick={() => setIsOpen(false)}>
+    <div className="command-palette-overlay fixed inset-0 z-[9999] flex items-start justify-center pt-32" onClick={() => { playTerminalClose(); setIsOpen(false); }}>
       <div 
         className="w-full max-w-lg rounded-xl border border-edge bg-surface shadow-2xl overflow-hidden font-mono"
         onClick={(e) => e.stopPropagation()}
@@ -112,11 +127,8 @@ export default function CommandPalette({ theme, onToggleTheme }) {
                         : 'text-muted hover:bg-base hover:text-ink border border-transparent'
                     }`}
                     onClick={() => {
-                      if (action.id === 'toggle-theme') {
-                        action.action(onToggleTheme)
-                      } else {
-                        action.action()
-                      }
+                      action.action()
+                      playTerminalClose()
                       setIsOpen(false)
                     }}
                     onMouseEnter={() => setSelectedIndex(index)}
