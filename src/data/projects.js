@@ -1,10 +1,10 @@
 const projects = [
   {
-    id: 'realtime-dashboard',
-    title: 'Realtime dashboard',
-    tag: 'React · WebSocket',
-    description: 'Visualisasi data live dengan animasi transisi antar state.',
-    link: '#',
+    id: 'web-portofolio',
+    title: 'Web Portofolio',
+    tag: 'React · Next.js',
+    description: 'Portofolio web dengan desain modern dan responsif.',
+    link: 'https://github.com/Jacobsaja/portofolio',
   },
   {
     id: 'component-playground',

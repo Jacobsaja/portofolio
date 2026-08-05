@@ -29,12 +29,19 @@ const skills = [
     statusColor: 'text-faint/50', 
     dotClass: 'bg-faint/50' 
   },
+  { 
+    name: 'Python', 
+    category: 'Tellecomunications', 
+    status: 'In PROGRESS', 
+    statusColor: 'text-accent', 
+    dotClass: 'bg-accent' 
+  }
 ]
 
 export default function Skills() {
   return (
     <section id="skills" className="mx-auto max-w-3xl px-6 py-20">
-      <h3 className="mb-2 font-mono text-sm text-accent">04 — Keahlian</h3>
+      <h3 className="mb-2 font-mono text-sm text-accent">03 — Keahlian</h3>
       <h2 className="mb-10 text-2xl font-medium text-ink sm:text-3xl">System Capabilities</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

@@ -48,7 +48,7 @@ function EncryptedContactLink({ social }) {
 export default function Contact() {
   return (
     <section id="contact" className="mx-auto max-w-3xl px-6 py-24">
-      <h3 className="mb-2 font-mono text-sm text-accent">06 — Kontak</h3>
+      <h3 className="mb-2 font-mono text-sm text-accent">05 — Kontak</h3>
       <h2 className="mb-6 text-2xl font-medium text-ink sm:text-3xl">Ngobrol yuk</h2>
 
       <p className="mb-8 max-w-xl text-base leading-relaxed text-muted">

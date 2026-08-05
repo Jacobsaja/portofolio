@@ -199,8 +199,8 @@ export default function App() {
         <main>
           <Intro onAwake={() => setNavReady(true)} heroDockRef={heroDockRef} />
           <Hero />
-          <Projects />
           <About />
+          <Projects />
           <Skills />
           <Experience />
           <HardwareControls 
