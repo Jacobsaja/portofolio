@@ -7,18 +7,18 @@ const projects = [
     link: 'https://github.com/Jacobsaja/portofolio',
   },
   {
-    id: 'component-playground',
-    title: 'Component playground',
-    tag: 'Design system',
-    description: 'Library komponen interaktif dengan dokumentasi hidup.',
-    link: '#',
+    id: 'web-sinodegkpi',
+    title: 'Web GKPI',
+    tag: 'Typescript · React · Sql',
+    description: ' project fullstack website untuk sinode GKPI.',
+    link: 'https://sinodegkpi.vercel.app/',
   },
   {
-    id: 'mini-game',
-    title: 'Mini game eksperimen',
-    tag: 'Canvas · Game',
-    description: 'Prototipe game browser dengan fisika sederhana.',
-    link: '#',
+    id: 'web-ROC',
+    title: 'Web ROC',
+    tag: 'Study · Game · Ai',
+    description: 'Web Bimble dan konsultasi berbasis AI.',
+    link: 'https://roc-mauve.vercel.app/',
   },
 ]
 

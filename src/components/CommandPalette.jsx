@@ -6,13 +6,14 @@ export default function CommandPalette({ theme, devMode, setDevMode, onToggleThe
     { id: 'go-hero', label: 'Go to Home', action: () => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' }) },
     { id: 'go-projects', label: 'Go to Projects', action: () => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }) },
     { id: 'go-about', label: 'Go to About', action: () => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' }) },
+    { id: 'go-achievements', label: 'Go to Achievements', action: () => document.getElementById('achievements')?.scrollIntoView({ behavior: 'smooth' }) },
     { id: 'go-contact', label: 'Go to Contact', action: () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }) },
     { id: 'toggle-theme', label: 'Toggle Theme', action: () => {
       onToggleTheme(window.innerWidth / 2, window.innerHeight / 2)
     }},
     { id: 'clear', label: 'Clear Terminal (Hide Content)', action: () => onClear?.() },
     { id: 'restore', label: 'Restore Content', action: () => onRestore?.() },
-    { id: 'help', label: 'Help / Show Commands', action: () => { console.log('Available Commands: go-hero, go-projects, go-about, go-contact, toggle-theme, clear, restore, matrix-toggle, simulator') } },
+    { id: 'help', label: 'Help / Show Commands', action: () => { console.log('Available Commands: go-hero, go-projects, go-about, go-achievements, go-contact, toggle-theme, clear, restore, matrix-toggle, simulator') } },
     { id: 'matrix-toggle', label: devMode ? 'Exit Matrix Mode' : 'Enter Matrix Mode', action: () => setDevMode(!devMode) },
     { id: 'simulator', label: 'Open Arduino Simulator', action: () => onToggleSimulator?.() },
   ]

@@ -20,7 +20,7 @@ const experiences = [
 export default function Experience() {
   return (
     <section id="experience" className="mx-auto max-w-3xl px-6 py-20">
-      <h3 className="mb-2 font-mono text-sm text-accent">05 — Pengalaman</h3>
+      <h3 className="mb-2 font-mono text-sm text-accent">04 — Pengalaman</h3>
       <h2 className="mb-10 text-2xl font-medium text-ink sm:text-3xl">Jejak Karir</h2>
 
       <div className="flex flex-col gap-10">

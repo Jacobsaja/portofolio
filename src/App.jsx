@@ -9,6 +9,7 @@ import Projects from './components/Projects.jsx'
 import About from './components/About.jsx'
 import Skills from './components/Skills.jsx'
 import Experience from './components/Experience.jsx'
+import Achievements from './components/Achievements.jsx'
 import OtherProjects from './components/OtherProjects.jsx'
 import HardwareControls from './components/HardwareControls.jsx'
 import Contact from './components/Contact.jsx'
@@ -199,10 +200,11 @@ export default function App() {
         <main>
           <Intro onAwake={() => setNavReady(true)} heroDockRef={heroDockRef} />
           <Hero />
-          <About />
           <Projects />
+          <About />
           <Skills />
           <Experience />
+          <Achievements />
           <HardwareControls 
             theme={theme} 
             setTheme={setTheme} 

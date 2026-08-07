@@ -5,6 +5,7 @@ const links = [
   { href: '#hero', label: 'Beranda' },
   { href: '#projects', label: 'Project' },
   { href: '#about', label: 'Profil' },
+  { href: '#achievements', label: 'Pencapaian' },
   { href: '#contact', label: 'Kontak' },
 ]
 

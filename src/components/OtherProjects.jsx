@@ -1,23 +1,23 @@
 const otherProjects = [
   {
     id: 'secret-1',
-    title: 'Secret Project Alpha',
-    tag: 'Classified',
-    description: 'Project rahasia yang terbuka setelah menghubungkan kabel A-B.',
-    link: '#',
+    title: 'Cekadu',
+    tag: 'Prototype',
+    description: 'Web Rasionaliasi Kuliah berbasis AI(cikal bakal ROC)',
+    link: 'https://cek-aja-dulu-phi.vercel.app/',
   },
   {
     id: 'secret-2',
-    title: 'Hidden Experiment',
+    title: 'Restoran By Dart',
     tag: 'Experimental',
-    description: 'Eksperimen tersembunyi dengan teknologi baru.',
-    link: '#',
+    description: 'Eksperimen menggunakan Dart.',
+    link: 'https://github.com/Jacobsaja/SIMPLE-RESTAURANT-PROGRAM-DART.git',
   },
   {
     id: 'secret-3',
-    title: 'Prototype X',
-    tag: 'Prototype',
-    description: 'Prototipe yang belum dirilis ke publik.',
+    title: 'Kalkulator',
+    tag: 'Experimental',
+    description: 'App saya yang menggunakan Typescript',
     link: '#',
   },
 ]
@@ -45,6 +45,8 @@ export default function OtherProjects() {
               <p className="mb-4 text-sm text-muted">{project.description}</p>
               <a
                 href={project.link}
+                target="_blank"           // <-- Ditambahkan agar kebuka di tab baru
+                rel="noopener noreferrer" // <-- Standar keamanan untuk target="_blank"
                 className="inline-block text-sm font-bold text-accent transition-colors hover:text-accent/80"
               >
                 Lihat Detail →
