@@ -101,7 +101,8 @@ export default function useSerialConnection() {
     connect,
     disconnect,
     sendCommand,
-    supported: !!navigator.serial
+    // Guard against browsers without Web Serial API (e.g. Firefox) to avoid crash
+    supported: typeof navigator !== 'undefined' && !!navigator.serial
   }
 }
 

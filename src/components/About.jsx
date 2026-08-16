@@ -29,8 +29,8 @@ export default function About() {
         {/* LEFT: photo + intro + CV, tetap seperti sebelumnya */}
         <div>
           <PhotoReveal
-            image1={`${import.meta.env.BASE_URL}images/me.jpg`}
-            image2={`${import.meta.env.BASE_URL}images/me-alt.jpg`}
+            image1={`${import.meta.env.BASE_URL}images/me.webp`}
+            image2={`${import.meta.env.BASE_URL}images/me-alt.webp`}
             alt="Foto profil"
             width={280}
             height={280}

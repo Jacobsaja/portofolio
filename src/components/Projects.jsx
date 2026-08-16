@@ -26,33 +26,56 @@ function ProjectCard({ project }) {
     card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'
   }
 
+  const imageUrl = `${import.meta.env.BASE_URL}${project.image}`
+
   return (
     <a
       ref={cardRef}
       href={project.link}
-      target="_blank"             // <-- Ditambahkan agar kebuka di tab baru
-      rel="noopener noreferrer"   // <-- Keamanan standar untuk target="_blank"
+      target="_blank"
+      rel="noopener noreferrer"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="project-card tilt-card group rounded-xl border border-edge bg-surface p-5 transition-colors hover:border-accent"
+      className="project-card tilt-card group flex flex-col justify-between overflow-hidden rounded-xl border border-edge bg-surface transition-all duration-300 hover:border-accent shadow-lg"
     >
-      {/* Tag row + arrow indicator */}
-      <div className="mb-3 flex items-center justify-between pointer-events-none">
-        <span className="inline-block rounded-md bg-accent-dim px-2 py-1 font-mono text-xs text-accent">
-          {project.tag}
-        </span>
-        <span className="font-mono text-xs text-faint/30 transition-colors group-hover:text-accent/60">
-          [→]
-        </span>
-      </div>
+      {/* WebP Image Preview Container */}
+      {project.image && (
+        <div className="relative h-44 w-full overflow-hidden bg-base border-b border-edge/60">
+          <img
+            src={imageUrl}
+            alt={project.title}
+            loading="lazy"
+            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80" />
+          
+          <span className="absolute top-3 left-3 rounded-md border border-accent/40 bg-base/80 px-2 py-0.5 font-mono text-[10px] text-accent backdrop-blur">
+            {project.tag}
+          </span>
+        </div>
+      )}
 
-      <h3 className="mb-1.5 text-base font-medium text-ink pointer-events-none">{project.title}</h3>
-      <p className="text-sm leading-relaxed text-muted pointer-events-none">{project.description}</p>
+      <div className="p-5 flex flex-col justify-between flex-1">
+        <div>
+          <div className="mb-2 flex items-center justify-between pointer-events-none">
+            <h3 className="text-base font-semibold text-ink transition-colors group-hover:text-accent">
+              {project.title}
+            </h3>
+            <span className="font-mono text-xs text-faint/40 group-hover:text-accent transition-colors">
+              [↗]
+            </span>
+          </div>
 
-      {/* Scan line separator — reveals on hover */}
-      <div className="mt-4 flex items-center gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
-        <span className="h-px flex-1 bg-accent/30" />
-        <span className="font-mono text-xs text-accent/50">OPEN</span>
+          <p className="text-xs leading-relaxed text-muted pointer-events-none">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Scan line separator — reveals on hover */}
+        <div className="mt-4 flex items-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none pt-2 border-t border-edge/30">
+          <span className="h-px flex-1 bg-accent/30" />
+          <span className="font-mono text-[10px] text-accent/80">KUNJUNGI DEMO</span>
+        </div>
       </div>
     </a>
   )

@@ -27,16 +27,9 @@ export default function HardwareStatus({ connected, data, error, theme }) {
   }, [data])
 
   if (!connected) {
-    return (
-      <div className="fixed bottom-4 right-4 z-50">
-        <div className="rounded-lg border border-edge/50 bg-surface/80 backdrop-blur-sm p-4 shadow-xl">
-          <div className="flex items-center gap-2">
-            <div className="h-2 w-2 rounded-full bg-red-500" />
-            <span className="text-xs text-muted">Hardware: Disconnected</span>
-          </div>
-        </div>
-      </div>
-    )
+    // Don't clutter the UI with a persistent "disconnected" badge —
+    // the HUD panel and CommandPalette already show hardware status.
+    return null
   }
 
   const signalStrength = signalHistory.length > 0 ? signalHistory[signalHistory.length - 1].strength : 0

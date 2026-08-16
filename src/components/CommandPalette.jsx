@@ -51,7 +51,7 @@ export default function CommandPalette({ theme, devMode, setDevMode, onToggleThe
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [])
+  }, [isOpen]) // isOpen added — Escape handler needs current value to call playTerminalClose()
 
   // Focus input saat terbuka
   useEffect(() => {

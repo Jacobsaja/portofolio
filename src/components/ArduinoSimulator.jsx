@@ -141,13 +141,18 @@ export default function ArduinoSimulator({ theme, setTheme, onEyeControl, visibl
   }
 
   const handlePotChange = (axis, value) => {
-    setPotValues(prev => ({ ...prev, [axis]: value }))
-    onEyeControl?.({ type: 'move', x: (potValues.x - 50) / 2, y: (potValues.y - 50) / 2 })
+    setPotValues(prev => {
+      const updated = { ...prev, [axis]: value }
+      // Use updated values to avoid stale closure
+      onEyeControl?.({ type: 'move', x: (updated.x - 50) / 2, y: (updated.y - 50) / 2 })
+      return updated
+    })
   }
 
   const flashLed = (color) => {
     setLedStates(prev => ({ ...prev, [color]: true }))
-    setTimeout(() => setLedStates(prev => ({ ...prev, [color]: false }), 300))
+    // Bug fix: closing paren was misplaced — LED was never turning off
+    setTimeout(() => setLedStates(prev => ({ ...prev, [color]: false })), 300)
   }
 
   const updateThemeLed = (currentTheme) => {
