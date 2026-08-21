@@ -19,17 +19,17 @@ export default function DownloadCV() {
         clearInterval(interval)
         playConfirmSound()
         setStatus('done')
-        
+
         // Simulate actual download delay
         setTimeout(() => {
           // In a real app, you would window.open('resume.pdf')
           const link = document.createElement('a')
-          link.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent('Resume content goes here. (Dummy File)')
-          link.download = 'jacob_resume.txt'
+          link.href = '/cv.pdf'
+          link.download = 'CV_Jacob.pdf'
           document.body.appendChild(link)
           link.click()
           document.body.removeChild(link)
-          
+
           // Reset after a while
           setTimeout(() => setStatus('idle'), 3000)
         }, 500)
@@ -48,7 +48,7 @@ export default function DownloadCV() {
   return (
     <div className="mt-8">
       {status === 'idle' && (
-        <button 
+        <button
           onClick={handleDownload}
           className="group flex items-center gap-2 border border-edge hover:border-accent bg-surface/50 px-4 py-2 text-sm font-mono text-ink transition-colors"
         >
