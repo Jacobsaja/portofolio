@@ -58,15 +58,12 @@ export default function About() {
         <div className="flex flex-col gap-12">
           <div>
             <h4 className="mb-3 font-mono text-xs uppercase tracking-widest text-accent/80">
-              Fokus & Tech Stack
+              Deskripsi Singkat
             </h4>
             <p className="max-w-lg text-base leading-relaxed text-muted">
-              Sebagai Full Stack Developer, saya membangun dari backend sampai
-              micro-interaction di layer paling atas — <span className="text-ink">React</span>{' '}
-              dan <span className="text-ink">Tailwind</span> di sisi antarmuka,{' '}
-              <span className="text-ink">PHP (Laravel / CodeIgniter)</span> dan{' '}
-              <span className="text-ink">MySQL</span> di sisi server, dengan RESTful API
-              sebagai penghubung keduanya.
+              Saya adalah seorang mahasiswa teknik — <span className="text-ink">Telekomunikasi</span>{' '}
+              di <span className="text-ink">Telkom University</span> angkatan 2026. Meski berada pada jurusan Telekomunikasi saya juga aktif dalam bidang pengembangan web dan teknologi.
+              Saya sangat tertarik pada <span className="text-ink">pengembangan IoT dan Web</span>
             </p>
           </div>
 

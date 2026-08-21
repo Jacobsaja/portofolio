@@ -3,8 +3,8 @@ import ThemeToggle from './ThemeToggle.jsx'
 
 const links = [
   { href: '#hero', label: 'Beranda' },
-  { href: '#projects', label: 'Project' },
   { href: '#about', label: 'Profil' },
+  { href: '#projects', label: 'Project' },
   { href: '#achievements', label: 'Pencapaian' },
   { href: '#contact', label: 'Kontak' },
 ]
