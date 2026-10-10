@@ -3,36 +3,43 @@ import React from 'react'
 const skills = [
   { 
     name: 'React / Next.js', 
-    category: 'Frontend', 
+    category: 'Web', 
     status: 'ONLINE', 
     statusColor: 'text-green-400/70', 
     dotClass: 'bg-green-400/70' 
   },
   { 
-    name: 'Node.js / Express', 
-    category: 'Backend', 
+    name: 'TypeScript / Tailwind CSS', 
+    category: 'Web', 
     status: 'ONLINE', 
     statusColor: 'text-green-400/70', 
     dotClass: 'bg-green-400/70' 
   },
   { 
-    name: 'Arduino / IoT', 
-    category: 'Hardware', 
+    name: 'Python [Lainnya: ISI]', 
+    category: 'Bahasa Pemrograman', 
+    status: 'ONLINE', 
+    statusColor: 'text-green-400/70', 
+    dotClass: 'bg-green-400/70' 
+  },
+  { 
+    name: 'Cisco Packet Tracer / Wireshark', 
+    category: 'Networking', 
+    status: 'ONLINE', 
+    statusColor: 'text-green-400/70', 
+    dotClass: 'bg-green-400/70' 
+  },
+  { 
+    name: 'Git / Linux (Fedora) / Docker', 
+    category: 'Tools & OS', 
+    status: 'ONLINE', 
+    statusColor: 'text-green-400/70', 
+    dotClass: 'bg-green-400/70' 
+  },
+  { 
+    name: 'IoT & Robotika (Arduino)', 
+    category: 'Hardware / IoT', 
     status: 'IN PROGRESS', 
-    statusColor: 'text-accent', 
-    dotClass: 'bg-accent' 
-  },
-  { 
-    name: 'Figma', 
-    category: 'Design', 
-    status: 'STANDBY', 
-    statusColor: 'text-faint/50', 
-    dotClass: 'bg-faint/50' 
-  },
-  { 
-    name: 'Python', 
-    category: 'Tellecomunications', 
-    status: 'In PROGRESS', 
     statusColor: 'text-accent', 
     dotClass: 'bg-accent' 
   }

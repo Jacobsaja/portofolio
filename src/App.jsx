@@ -8,7 +8,6 @@ import Hero from './components/Hero.jsx'
 import Projects from './components/Projects.jsx'
 import About from './components/About.jsx'
 import Skills from './components/Skills.jsx'
-import Experience from './components/Experience.jsx'
 import Achievements from './components/Achievements.jsx'
 import OtherProjects from './components/OtherProjects.jsx'
 import HardwareControls from './components/HardwareControls.jsx'
@@ -53,9 +52,9 @@ export default function App() {
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        document.title = '[SIGNAL LOST] Jacob.dev'
+        document.title = '[SIGNAL LOST] Jacob Simorangkir'
       } else {
-        document.title = 'Jacob — Full Stack Developer'
+        document.title = 'Jacob Simorangkir — Mahasiswa Teknik Telekomunikasi'
       }
     }
     document.addEventListener('visibilitychange', handleVisibilityChange)
@@ -203,7 +202,6 @@ export default function App() {
           <About />
           <Projects />
           <Skills />
-          <Experience />
           <Achievements />
           <HardwareControls 
             theme={theme} 

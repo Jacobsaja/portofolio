@@ -152,7 +152,7 @@ export default function Contact() {
 
           <div className="rounded-lg border border-edge/40 bg-surface/30 p-4 font-mono text-xs text-faint space-y-1">
             <p className="text-accent text-[11px] font-bold">📍 LOCALIZATION & AVAILABILITY</p>
-            <p>• Location: Medan / Remote Worldwide</p>
+            <p>• Location: Medan, Sumatera Utara, Indonesia</p>
             <p>• Status: <span className="text-green-400">Available for Opportunities</span></p>
             <p>• Response Time: &lt; 24 Hours</p>
           </div>

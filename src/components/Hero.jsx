@@ -2,18 +2,16 @@ export default function Hero() {
   return (
     <section id="hero" className="mx-auto max-w-3xl px-6 py-28">
       <p className="mb-4 animate-fadeUp font-mono text-xs text-accent opacity-0">
-        <span className="text-faint/50">// </span>Full stack developer
+        <span className="text-faint/50">// </span>Mahasiswa S1 Teknik Telekomunikasi — Telkom University
       </p>
 
       <h2 className="mb-6 animate-fadeUp text-3xl font-medium leading-snug text-ink opacity-0 sm:text-4xl [animation-delay:0.12s]">
-        Bangun produk yang{' '}
-        <span className="glitch-text">terasa hidup</span>
-        , bukan cuma berfungsi.
+        Menghubungkan hardware, jaringan, dan web{' '}
+        <span className="glitch-text">menjadi sistem yang utuh</span>.
       </h2>
 
       <p className="mb-8 max-w-xl animate-fadeUp text-base leading-relaxed text-muted opacity-0 [animation-delay:0.24s]">
-        Fokus di React, sistem interaktif, dan detail micro-interaction yang bikin orang mau
-        eksplor lebih jauh — bukan sekadar scroll lewat.
+        Fokus pada eksplorasi IoT, robotika, web development, dan computer networking. Berkomitmen membangun solusi teknologi terintegrasi dari layer hardware hingga antarmuka pengguna.
       </p>
 
       <div className="flex animate-fadeUp gap-4 opacity-0 [animation-delay:0.36s]">

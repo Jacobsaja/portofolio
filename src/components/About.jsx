@@ -26,12 +26,12 @@ export default function About() {
       <h2 className="mb-12 text-2xl font-medium text-ink sm:text-3xl">Sedikit tentang saya</h2>
 
       <div className="grid grid-cols-1 gap-x-16 gap-y-14 lg:grid-cols-2">
-        {/* LEFT: photo + intro + CV, tetap seperti sebelumnya */}
+        {/* LEFT: photo + intro + CV */}
         <div>
           <PhotoReveal
             image1={`${import.meta.env.BASE_URL}images/me.webp`}
             image2={`${import.meta.env.BASE_URL}images/me-alt.webp`}
-            alt="Foto profil"
+            alt="Foto profil Jacob Simorangkir"
             width={280}
             height={280}
             className="mb-8"
@@ -44,37 +44,29 @@ export default function About() {
           </p>
 
           <p className="mb-8 max-w-xl text-base leading-relaxed text-muted">
-            Bagian dari development yang <R>jarang dilihat</R> orang: transisi{' '}
-            <R>300ms yang pas</R>, cursor yang <R>berubah bentuk</R> di waktu yang tepat,
-            halaman kosong yang tetap terasa disengaja. Bagiku,{' '}
-            <R>detail kecil itu</R> yang membedakan produk yang &ldquo;berfungsi&rdquo; dengan
-            produk yang <R>&ldquo;diingat&rdquo;</R>.
+            Saya adalah mahasiswa S1 <R>Teknik Telekomunikasi</R> di <R>Telkom University</R> dan alumni <R>SMA Swasta Methodist 6 Medan</R>. Memiliki minat kuat dalam eksplorasi teknologi terapan, khususnya pada bidang <R>IoT, robotika, web development, dan networking</R>.
           </p>
 
           <DownloadCV />
         </div>
 
-        {/* RIGHT: subsections dengan judul masing-masing, spacing longgar */}
+        {/* RIGHT: subsections dengan judul masing-masing */}
         <div className="flex flex-col gap-12">
           <div>
             <h4 className="mb-3 font-mono text-xs uppercase tracking-widest text-accent/80">
-              Deskripsi Singkat
+              Latar Belakang & Minat
             </h4>
             <p className="max-w-lg text-base leading-relaxed text-muted">
-              Saya adalah seorang mahasiswa teknik — <span className="text-ink">Telekomunikasi</span>{' '}
-              di <span className="text-ink">Telkom University</span> angkatan 2026. Meski berada pada jurusan Telekomunikasi saya juga aktif dalam bidang pengembangan web dan teknologi.
-              Saya sangat tertarik pada <span className="text-ink">pengembangan IoT dan Web</span>
+              Sebagai mahasiswa Teknik Telekomunikasi, saya aktif mengeksplorasi integrasi antara perangkat keras dan perangkat lunak. Ketertarikan saya berakar pada bagaimana protokol komunikasi, sistem sensor IoT, dan antarmuka web modern dapat saling terhubung untuk memecahkan masalah riil.
             </p>
           </div>
 
           <div>
             <h4 className="mb-3 font-mono text-xs uppercase tracking-widest text-accent/80">
-              Cara Kerja
+              Arah Jangka Panjang
             </h4>
             <p className="max-w-lg text-base leading-relaxed text-muted">
-              Terbiasa memegang satu sistem dari kebutuhan sampai deploy — bukan
-              cuma nulis fitur, tapi mikirin skema database, performa query, dan
-              apakah kode itu masih masuk akal enam bulan dari sekarang.
+              Arah target saya ke depan terfokus pada perolehan sertifikasi industri resmi (seperti Cisco / Huawei), meraih kesempatan magang di perusahaan teknologi besar, dan menyelesaikan proyek capstone inovatif yang mengintegrasikan telekomunikasi, jaringan, IoT, serta robotika.
             </p>
           </div>
         </div>

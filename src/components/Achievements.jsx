@@ -4,131 +4,113 @@ import { useState } from 'react'
 const educationData = [
   {
     id: 'edu-1',
-    title: 'Sarjana Teknik Informatika (S.Kom)',
-    institution: 'Universitas Sumatera Utara (USU)',
-    year: '2020 - 2024',
-    badge: 'CUM LAUDE',
+    title: 'S1 Teknik Telekomunikasi',
+    institution: 'Telkom University',
+    year: '2026 - Sekarang',
+    badge: 'MAHASISWA AKTIF',
     badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40',
-    description: 'Lulus dengan predikat Cum Laude (IPK 3.82/4.00). Fokus riset pada Rekayasa Perangkat Lunak, Arsitektur Sistem, dan Machine Learning.',
-    highlights: ['Ketua Tim Tugas Akhir', 'Publikasi Jurnal Riset', 'Asisten Laboratorium Komputer'],
+    description: 'Menempuh studi sarjana Teknik Telekomunikasi dengan fokus minat pada IoT, robotika, web development, dan networking.',
+    highlights: ['Minat IoT & Robotika', 'Networking & Web Development', 'Persiapan Sertifikasi Cisco/Huawei'],
     icon: '🎓'
   },
   {
     id: 'edu-2',
-    title: 'SMA / Sekolah Menengah Atas (MIPA)',
-    institution: 'SMA Negeri 1 Medan',
-    year: '2017 - 2020',
-    badge: 'LULUSAN TERBAIK',
+    title: 'Sekolah Menengah Atas (SMA)',
+    institution: 'SMA Swasta Methodist 6 Medan',
+    year: 'Lulus 2026',
+    badge: 'ALUMNI',
     badgeColor: 'bg-blue-500/20 text-blue-400 border-blue-500/40',
-    description: 'Jurusan Matematika dan Ilmu Pengetahuan Alam (MIPA). Aktif dalam Klub Sains Komputer dan Olimpiade Sains Nasional (OSN).',
-    highlights: ['Juara Olimpiade Informatika', 'Pengurus OSIS Sekbid IPTEK'],
+    description: 'Menyelesaikan pendidikan menengah atas dengan aktif berorganisasi kepengurusan OSIS dan berpartisipasi pada ajang kompetisi sains & bahasa.',
+    highlights: ['Wakil Ketua OSIS 2024/2025', 'Peringkat 10 Kihajar STEM Sumut', 'Juara 3 Cerdas Cermat Regional'],
     icon: '🏫'
   }
 ]
 
-// Category 2: Prestasi & Sertifikasi
+// Category 2: Prestasi & Organisasi
 const awardsData = [
   {
-    id: 'award-1',
-    title: 'Juara 1 Hackathon Nasional',
-    institution: 'Indonesia Tech Summit 2023',
-    year: '2023',
-    badge: 'JUARA 1',
+    id: 'org-1',
+    title: 'Wakil Ketua OSIS',
+    institution: 'SMA Swasta Methodist 6 Medan',
+    year: '2024 / 2025',
+    badge: 'ORGANISASI',
     badgeColor: 'bg-amber-500/20 text-amber-400 border-amber-500/40',
-    description: 'Mengembangkan solusi IoT dan Smart City Monitoring System berbasis AI dalam kompetisi maraton 48 jam bersama tim.',
-    highlights: ['Lead System Architect', 'Pitching Presentation Winner'],
+    description: 'Menjalankan kepemimpinan kesiswaan, memimpin koordinasi lintas divisi, serta merancang dan mengeksekusi program kerja organisasi sekolah.',
+    highlights: ['Kepemimpinan Kesiswaan', 'Manajemen Program Kerja'],
+    icon: '👑'
+  },
+  {
+    id: 'award-1',
+    title: 'Juara 3 Cerdas Cermat Regional',
+    institution: 'Gebyar Hardiknas 2024',
+    year: '2024',
+    badge: 'JUARA 3',
+    badgeColor: 'bg-purple-500/20 text-purple-400 border-purple-500/40',
+    description: 'Meraih Juara 3 dalam kompetisi akademik cerdas cermat tingkat regional pada ajang Gebyar Hari Pendidikan Nasional 2024.',
+    highlights: ['Tingkat Regional', 'Kompetisi Akademik'],
     icon: '🏆'
   },
   {
     id: 'award-2',
-    title: 'Best Paper & Presentation Award',
-    institution: 'International Conference on Computer Science',
-    year: '2022',
-    badge: 'PRESTASI INTERNASIONAL',
-    badgeColor: 'bg-purple-500/20 text-purple-400 border-purple-500/40',
-    description: 'Penghargaan makalah penelitian terbaik untuk topik Natural Language Processing & Sentiment Analysis Bahasa Indonesia.',
-    highlights: ['Published Proceeding', 'Oral Speaker'],
-    icon: '📝'
-  },
-  {
-    id: 'cert-1',
-    title: 'AWS Certified Solutions Architect',
-    institution: 'Amazon Web Services (AWS)',
-    year: '2023 - Valid',
-    badge: 'SERTIFIKASI PRO',
+    title: 'Peringkat 10 Provinsi Sumatera Utara',
+    institution: 'Kihajar STEM 2024',
+    year: '2024',
+    badge: 'TOP 10 PROVINSI',
     badgeColor: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40',
-    description: 'Sertifikasi profesional tingkat arsitek untuk perencanaan infrastructure cloud, scalability, security, dan high availability.',
-    highlights: ['Cloud Infrastructure', 'Security & Compliance'],
-    icon: '☁️'
+    description: 'Meraih posisi 10 besar tingkat Provinsi Sumatera Utara dalam ajang kompetisi eksplorasi sains, teknologi, rekayasa, dan matematika (Kihajar STEM).',
+    highlights: ['Science, Tech, Engineering & Math', 'Tingkat Provinsi'],
+    icon: '🔬'
   },
   {
-    id: 'cert-2',
-    title: 'Google UX Design Professional Certificate',
-    institution: 'Google / Coursera',
-    year: '2022',
-    badge: 'SERTIFIKASI GLOBAL',
+    id: 'award-3',
+    title: 'Skor UKBI Kategori Tinggi',
+    institution: 'Badan Pengembangan dan Pembinaan Bahasa',
+    year: 'Terverifikasi',
+    badge: 'KEMAHIRAN BAHASA',
     badgeColor: 'bg-rose-500/20 text-rose-400 border-rose-500/40',
-    description: 'Sertifikasi keahlian penelitian pengguna (user research), wireframing, prototyping, usability testing, dan desain antarmuka.',
-    highlights: ['User Research', 'Interactive Prototyping'],
-    icon: '🎨'
+    description: 'Memperoleh predikat kategori Tinggi pada Uji Kemahiran Berbahasa Indonesia (UKBI), mencerminkan standar kemahiran komunikasi dan tata bahasa tingkat lanjut.',
+    highlights: ['Uji Standar Nasional', 'Kemahiran Komunikasi'],
+    icon: '📜'
   }
 ]
 
-// Category 3: Skill Non-Web (Soft Skills & Leadership)
+// Category 3: Skill Non-Web & Bahasa
 const softSkillsData = [
   {
     id: 'soft-1',
-    title: 'Leadership & Community Management',
+    title: 'Leadership & Manajemen Organisasi',
     category: 'LEADERSHIP',
-    level: 'Advanced',
+    level: 'Organisasi',
     icon: '👑',
-    description: 'Pengalaman memimpin komunitas Google Developer Student Club (500+ anggota aktif), mengorganisir 15+ workshop teknologi, dan membimbing anggota tim.',
-    tags: ['Team Lead', 'Community Building', 'Event Management', 'Public Speaking']
+    description: 'Pengalaman kepemimpinan strategis sebagai Wakil Ketua OSIS periode 2024/2025: delegasi tugas, penyelarasan tim, dan komunikasi antarsiswa.',
+    tags: ['Wakil Ketua OSIS', 'Team Coordination', 'Event Planning']
   },
   {
     id: 'soft-2',
-    title: 'Teamwork & Cross-functional Collaboration',
-    category: 'COLLABORATION',
-    level: 'Expert',
-    icon: '🤝',
-    description: 'Kemampuan berkolaborasi secara efisien dengan desainer UI/UX, Product Manager, QA Tester, dan tim hardware/IoT dengan komunikasi yang terbuka.',
-    tags: ['Cross-functional', 'Agile/Scrum', 'Conflict Resolution', 'Peer Review']
+    title: 'Penalaran STEM & Problem Solving',
+    category: 'ANALYTICAL',
+    level: 'Kompetisi',
+    icon: '🧠',
+    description: 'Keahlian analisis dan pemecahan masalah berbasis sains dan teknologi yang terasah melalui kompetisi Kihajar STEM dan cerdas cermat.',
+    tags: ['STEM', 'Analytical Thinking', 'Problem Solving']
   },
   {
     id: 'soft-3',
-    title: 'Problem Solving & Critical Thinking',
-    category: 'ANALYTICAL',
-    level: 'Expert',
-    icon: '🧠',
-    description: 'Pendekatan analitis dalam memecahkan masalah kompleks, pemetaan skenario akar masalah (Root Cause Analysis), dan pengambilan keputusan berbasis data.',
-    tags: ['Root Cause Analysis', 'Systemic Thinking', 'Debugging Mindset', 'Risk Mitigation']
+    title: 'Bahasa Indonesia (Native)',
+    category: 'LANGUAGES',
+    level: 'Kategori Tinggi',
+    icon: '🌐',
+    description: 'Penutur asli (Native) dengan capaian skor kategori Tinggi pada Uji Kemahiran Berbahasa Indonesia (UKBI).',
+    tags: ['Indonesia (Native)', 'UKBI Kategori Tinggi', 'Komunikasi Formal']
   },
   {
     id: 'soft-4',
-    title: 'Public Speaking & Technical Mentoring',
-    category: 'COMMUNICATION',
-    level: 'Advanced',
-    icon: '🗣️',
-    description: 'Terbiasa menyampaikan materi teknis dengan bahasa yang mudah dipahami. Pernah menjadi Asisten Dosen untuk 200+ mahasiswa dan pembicara seminar tech.',
-    tags: ['Mentoring', 'Presentation', 'Knowledge Sharing', 'Technical Writing']
-  },
-  {
-    id: 'soft-5',
-    title: 'Adaptability & Rapid Learning',
-    category: 'AGILITY',
-    level: 'Expert',
-    icon: '⚡',
-    description: 'Kemampuan tinggi dalam mempelajari teknologi, framework, dan domain bisnis baru secara cepat dan mandiri (self-driven learner).',
-    tags: ['Self-Taught', 'Fast Learner', 'Growth Mindset', 'Continuous Improvement']
-  },
-  {
-    id: 'soft-6',
-    title: 'Bahasa Asing & Komunikasi Global',
+    title: 'Bahasa Inggris',
     category: 'LANGUAGES',
-    level: 'Multilingual',
-    icon: '🌐',
-    description: 'Bahasa Indonesia (Native/Fasih), Bahasa Inggris (Professional Fluent - C1), Bahasa Jepang (JLPT N3 - Percakapan Sehari-hari).',
-    tags: ['Indonesia (Native)', 'English (C1 Fluent)', 'Japanese (N3)']
+    level: '[ISI Level]',
+    icon: '🗣️',
+    description: 'Kemampuan komunikasi dan telaah literatur teknis dalam Bahasa Inggris. Kualifikasi/level spesifik: [ISI level kemahiran / skor tes].',
+    tags: ['English', '[ISI Level]']
   }
 ]
 
@@ -138,8 +120,8 @@ export default function Achievements() {
   const tabs = [
     { id: 'all', label: 'SEMUA', count: educationData.length + awardsData.length + softSkillsData.length },
     { id: 'edu', label: '1. RIWAYAT PENDIDIKAN', count: educationData.length },
-    { id: 'awards', label: '2. PRESTASI & SERTIFIKASI', count: awardsData.length },
-    { id: 'soft', label: '3. SKILL NON-WEB (SOFT SKILLS)', count: softSkillsData.length },
+    { id: 'awards', label: '2. PRESTASI & ORGANISASI', count: awardsData.length },
+    { id: 'soft', label: '3. BAHASA & SOFT SKILLS', count: softSkillsData.length },
   ]
 
   const showEdu = activeTab === 'all' || activeTab === 'edu'
@@ -250,7 +232,7 @@ export default function Achievements() {
         )}
 
         {/* ========================================== */}
-        {/* 2. PRESTASI & SERTIFIKASI                  */}
+        {/* 2. PRESTASI & ORGANISASI                   */}
         {/* ========================================== */}
         {showAwards && (
           <div className="animate-fadeUp">
@@ -259,7 +241,7 @@ export default function Achievements() {
                 02
               </span>
               <h3 className="font-mono text-sm font-bold tracking-wider text-ink uppercase">
-                Prestasi & Sertifikasi
+                Prestasi & Organisasi
               </h3>
               <span className="h-px flex-1 bg-edge/40" />
             </div>
@@ -311,7 +293,7 @@ export default function Achievements() {
         )}
 
         {/* ========================================== */}
-        {/* 3. SKILL NON-WEB (SOFT SKILLS & LEADERSHIP)*/}
+        {/* 3. BAHASA & SOFT SKILLS                    */}
         {/* ========================================== */}
         {showSoft && (
           <div className="animate-fadeUp">
@@ -320,7 +302,7 @@ export default function Achievements() {
                 03
               </span>
               <h3 className="font-mono text-sm font-bold tracking-wider text-ink uppercase">
-                Skill Non-Web & Soft Skills
+                Bahasa & Soft Skills
               </h3>
               <span className="h-px flex-1 bg-edge/40" />
             </div>

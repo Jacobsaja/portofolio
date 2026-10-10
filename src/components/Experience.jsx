@@ -1,27 +1,17 @@
 import React from 'react'
 
 const experiences = [
-  {
-    id: 1,
-    role: 'Full Stack Developer',
-    company: 'Freelance',
-    duration: '2022 - Present',
-    description: 'Merancang dan mengembangkan aplikasi web dari ujung ke ujung. Fokus pada arsitektur yang scalable, performa yang tinggi, dan pengalaman pengguna yang mulus.',
-  },
-  {
-    id: 2,
-    role: 'Frontend Engineer',
-    company: 'Tech Startup',
-    duration: '2020 - 2022',
-    description: 'Bertanggung jawab atas pengembangan antarmuka interaktif. Mengoptimalkan load time hingga 40% dan menerapkan sistem desain yang konsisten di seluruh produk.',
-  },
+  // Riwayat Pengalaman Kerja / Magang: [ISI jika ada]
+  // Saat ini difokuskan pada persiapan sertifikasi industri, magang teknologi, dan studi akademik.
 ]
 
 export default function Experience() {
+  if (experiences.length === 0) return null
+
   return (
     <section id="experience" className="mx-auto max-w-3xl px-6 py-20">
       <h3 className="mb-2 font-mono text-sm text-accent">04 — Pengalaman</h3>
-      <h2 className="mb-10 text-2xl font-medium text-ink sm:text-3xl">Jejak Karir</h2>
+      <h2 className="mb-10 text-2xl font-medium text-ink sm:text-3xl">Pengalaman & Magang</h2>
 
       <div className="flex flex-col gap-10">
         {experiences.map((exp) => (

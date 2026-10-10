@@ -28,12 +28,14 @@ function ProjectCard({ project }) {
 
   const imageUrl = `${import.meta.env.BASE_URL}${project.image}`
 
+  const isLiveLink = project.link && project.link !== '#' && !project.link.includes('ISI')
+
   return (
     <a
       ref={cardRef}
-      href={project.link}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={isLiveLink ? project.link : '#projects'}
+      target={isLiveLink ? "_blank" : undefined}
+      rel={isLiveLink ? "noopener noreferrer" : undefined}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="project-card tilt-card group flex flex-col justify-between overflow-hidden rounded-xl border border-edge bg-surface transition-all duration-300 hover:border-accent shadow-lg"
@@ -62,7 +64,7 @@ function ProjectCard({ project }) {
               {project.title}
             </h3>
             <span className="font-mono text-xs text-faint/40 group-hover:text-accent transition-colors">
-              [↗]
+              {isLiveLink ? '[↗]' : '[...]'}
             </span>
           </div>
 
@@ -74,7 +76,9 @@ function ProjectCard({ project }) {
         {/* Scan line separator — reveals on hover */}
         <div className="mt-4 flex items-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none pt-2 border-t border-edge/30">
           <span className="h-px flex-1 bg-accent/30" />
-          <span className="font-mono text-[10px] text-accent/80">KUNJUNGI DEMO</span>
+          <span className="font-mono text-[10px] text-accent/80">
+            {isLiveLink ? 'KUNJUNGI DEMO' : 'STATUS: ' + (project.status || 'DALAM PENGEMBANGAN')}
+          </span>
         </div>
       </div>
     </a>
